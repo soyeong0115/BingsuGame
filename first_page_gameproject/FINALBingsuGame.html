@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+    <style type = "text/css"> 
+        a {
+            text-decoration: underline rgba(255, 255, 255, 0);
+            font-size: 100px;
+            padding: 10px;
+            margin: 50px;
+        }
+        #farm {
+            height: 700px;
+            background-image: url('img/background.png');
+            position: relative;
+            
+        }
+        #field {
+            margin: auto;
+            justify-content: center;
+            width: 1100px;
+            display: flex; 
+            border: 5px outset #2d2d2d;
+        }
+        #field img {
+            margin: 0; 
+        }
+        h1 {
+            font-size: 70px;
+            text-shadow: 4px 4px 1px rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+        }
+        h2 {
+            font-size: 75px;
+            text-shadow: 4px 4px 1px rgb(0, 0, 0);
+            color: rgb(101, 131, 164);
+        }
+        footer {
+            font-family: "둥근모꼴";
+            font-size: 12px;
+        }
+        .text {
+            color: black;
+            text-align: center;
+            font-family: "둥근모꼴";
+        }
+        section {
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            padding: 10px;
+            background-color: #ffffff57;
+            border-radius: 10px;
+            width: 500px;
+            margin: auto;
+        }
+        .container2 {
+            padding: 10px;
+            background-color: #ffffff57;
+            border-radius: 10px;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+        #score {
+            background-color: rgba(255, 255, 255, 0.475);
+            border: 6px solid #47010199;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px rgb(9, 73, 40);
+            width: 130px;
+            height: 45px;
+        }
+        
+        .number {
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            margin: auto;
+        }
+        .cashNumber{
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            margin: auto;
+        }
+        .BingsuNumber{
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            margin: auto;
+        }
+        #BingsuNumber{
+            background-color: rgba(255, 255, 255, 0.475);
+            border: 6px solid #f9989881;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px #fff1e8a4;
+            width: 130px;
+            height: 45px;
+        }
+        #finalMoney {
+            background-color: rgba(255, 255, 255, 0.475);
+            border: 6px solid #ffbb0081;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px rgb(90, 37, 2);
+            width: 130px;
+            height: 45px;
+        }
+        button {
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 8px;
+            margin: 12px;
+            cursor: move;
+            font-size: 50px;
+            background: #ffffffb5;
+            box-shadow: 5px 5px 1px rgb(39, 39, 39);
+            transition: bottom 10ms ease-in,
+                        box-shadow 10ms ease-in;
+        }
+        button:hover {
+            bottom: 15px;
+            box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+        }
+        img.dragging-over {
+            border: 2px solid white;
+        }
+        #timer {
+            background-color: rgba(255, 255, 255, 0.733);
+            border: 6px solid #b1ecff99;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px rgb(4, 48, 65);
+            width: 200px;
+            height: 45px;
+        }
+        .timerNumber {
+            color: rgb(90, 90, 90);
+            font-size: 40px;
+            margin: auto;
+        }
+        #horizontal {
+            display: flex; 
+            justify-content: center;
+            gap: 20px; 
+        }
+
+        #making {
+            width: 1300px;
+            height: 900px;
+            background-image: url("img/cafe2.png");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+/* 빙수재고부분 */
+.BingsuNumber{
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            margin: auto;
+        }
+#BingsuNumber{
+            background-color: rgba(255, 255, 255, 0.475);
+            border: 6px solid #f9989881;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px #fff1e8a4;
+            width: 130px;
+            height: 45px;
+        }
+
+/* 현금부분 */
+#finalMoney {
+            background-color: rgba(255, 255, 255, 0.475);
+            border: 6px solid #ffbb0081;
+            border-radius: 50px;
+            border-style: outset;
+            box-shadow: 4px 4px 1px rgb(90, 37, 2);
+            width: 130px;
+            height: 45px;
+        }
+
+
+
+/* 가게 이미지 크기 */
+.shop-background {
+    position: relative;
+    height: 36vh;
+    background-image: url('img/shop_background.png');
+    background-size:1000px 1000px;
+}
+
+/* 고객 위치 */
+.character {
+    position: absolute;
+    top: 96%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+/* 고객 이미지 크기 */
+.customer-image {
+    width: 350px;
+    height: auto;
+}
+
+/* 나타나는 애니메이션 */
+@keyframes appearAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 1초 동안 사라지는 애니메이션 */
+.hide-animation {
+    animation: hideAnimation 500ms forwards;
+}
+
+/* 1에서 0으로 사라지는 애니메이션 */
+@keyframes hideAnimation {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+#gofarm:hover img {
+            content: url("img/farmButton2.png");
+        }
+#gomaking:hover img {
+            content: url("img/makingButton2.png");
+        }
+#gocash:hover img {
+            content: url("img/cashButton2.png");
+        }
+
+        .box1 {
+            padding: 10px;
+            background-color: #ffffff96;
+            border-radius: 10px;
+            width: 550px;
+            height: 520px;
+            
+            position: absolute;
+            top: 13%;
+            right: 14%;
+            
+        }
+      
+      .box2 {
+          padding: 10px;
+          background-color: #ffffff96;
+          border-radius: 10px;
+          width: 400px;
+          height: 520px;
+            
+          position: absolute;
+          top: 13%;
+          left: 14%;
+      }
+      #space {
+        width: 800px;
+      }
+      #cash {
+        background-image: url("img/cashBackground.png");
+      }
+      #gameover {
+        background-image: url("img/gameoverbackground.jpg");
+        width: 800px;
+        height: 300px;
+        font-size: 130px;
+        text-shadow: 5px 5px 1px rgb(61, 61, 61);
+        color: rgb(111, 144, 190);
+        margin: auto;
+      }
+      #mainButton {
+        position: absolute;
+        top: 510%;
+        left: 45%;
+        font-family: "둥근모꼴";
+        font-size: 30px;
+        width: 130px;
+        height: 45px;
+        border: 3px;
+        background-color: white;
+        box-shadow: 5px 6px 1px rgb(27, 62, 84);
+        border-radius: 8px;
+      }
+      #mainButton:hover {
+            bottom: 15px;
+            box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+        }
+        #totalScore {
+            position: absolute;
+            top: 498%;
+            left: 30%;
+            font-size: 35px;
+            text-shadow: 2px 2px 1px rgba(0, 0, 0, 0);
+            color: rgb(219, 86, 86);
+        }
+
+    </style>
+<head>
+    <link rel="stylesheet" href="makebingsu.css"> 
+    <meta charset="UTF-8">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<header>
+    <title>Bingsu Game</title>
+</header>
+
+<!-- 혜정 -->
+<br><br>
+<div id="cash"  class="scroll-target">
+<br><br>
+        <div id="horizontal">
+            <div id="timer"><p class="timerNumber">02:00</p></div>
+            <div id="score"><p class="number">🍉0</p></div>
+            <div id="BingsuNumber"><p class="BingsuNumber">🍨0</p></div>
+            <div id="finalMoney"><p class="cashNumber">🪙0</p></div>
+        </div><br>
+
+<section>
+  <!-- 고객 이미지 -->
+  <div class="shop-background">
+    <div id="clientQueue" class="character">
+      <img src="img/person1.png" class="customer-image" alt="person_1" />
+      <img src="img/person2.png" class="customer-image" alt="person_2" />
+      <img src="img/person3.png" class="customer-image" alt="person_3" />
+      <img src="img/person4.png" class="customer-image" alt="person_4" />
+      <img src="img/person5.png" class="customer-image" alt="person_5" />
+    </div>
+  </div>
+
+</section>
+
+
+<section>
+    <!-- 섹션 요소 시작 -->
+    <div id="horizontal">
+        <a class="scroll-button"  id="gomaking"><img src = "img/makingButton1.png"></a>
+        <div id="space"></div>
+        <a class="scroll-button"  id="gofarm"><img src = "img/farmButton1.png"></a>
+    </div>
+</section>
+</div>
+
+<br><br><br><br><br><br>
+<!-- 소영 -->
+<div id="making" class="scroll-target">
+    <body>
+        <br>
+        <div id="horizontal">
+            <div id="timer"><p class="timerNumber">02:00</p></div>
+            <div id="score"><p class="number">🍉0</p></div>
+            
+            <!-- 빙수 개수를 표시하는 부분 업데이트 -->
+            <div id="BingsuNumber"><p class="BingsuNumber">🍨0</p></div>
+            <div id="finalMoney"><p class="cashNumber">🪙0</p></div>
+        </div><br>
+        
+        <div class="box1"></div>
+        <div class="box2"></div>
+
+    <figure class="ricecake" onclick="showImage('img/bricecake.PNG')">
+        <img class="ricecakeimg" src="img/ricecake.PNG" alt="빙수떡"><br>
+        <figurecaption class="name1"><p>빙수떡</p></figurecaption>
+    </figure>
+    <figure class="watermelon" onclick="showImage('img/bwatermelon.PNG')">
+        <img class="watermelonimg" src="img/watermelon.PNG" alt="수박"><br>
+        <figurecaption class="name2"><p>수박</p></figurecaption>
+    </figure>
+    <figure class="redbean" onclick="showImage('img/bredbean.PNG')">
+        <img class="redbeanimg" src="img/redbean.PNG" alt="팥"><br>
+        <figurecaption class="name3"><p><br>팥</p></figurecaption>
+    </figure>
+    <figure class="ice" onclick="showImage('img/bice.PNG')">
+        <img class="iceimg" src="img/ice.PNG" alt="얼음"><br>
+        <figurecaption class="name4"><p>얼음</p></figurecaption>
+    </figure>
+    <figure class="milk" onclick="showImage('img/bmilk.PNG')">
+        <img class="milkimg" src="img/milk.PNG" alt="연유"><br>
+        <figurecaption class="name5"><p>연유</p></figurecaption>
+    </figure>
+    <figure class="jelly" onclick="showImage('img/bjelly.PNG')">
+        <img class="jellyimg" src="img/jelly.PNG" alt="빙수젤리"><br>
+        <figurecaption class="name9"><p>빙수젤리</p></figurecaption>
+    </figure>
+    <figure class="choco" onclick="showImage('img/bchoco.PNG')">
+        <img class="chocoimg" src="img/choco.PNG" alt="초코맛아이스크림"><br>
+        <figurecaption class="name6"><p>초코맛</p></figurecaption>
+    </figure>
+    <figure class="strawberry" onclick="showImage('img/bstrawberry.PNG')">
+        <img class="strawberryimg" src="img/strawberry.PNG" alt="딸기맛아이스크림"><br>
+        <figurecaption class="name7"><p>딸기맛</p></figurecaption>
+    </figure>
+    <figure class="banila" onclick="showImage('img/bbanila.PNG')">
+        <img class="banilaimg" src="img/banila.PNG" alt="바닐라맛아이스크림"><br>
+        <figurecaption class="name8"><p>바닐라맛</p></figurecaption>
+    </figure>
+    
+      <figure class="coin" onclick="sellBingsu()">
+          <img class="coinimg" src="img/complete.PNG" alt="빙수 판매하기">
+          <figurecaption class="cointext"><p></p></figurecaption>
+      </figure>
+    
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="horizontal">
+        <a class="scroll-button"  id="gocash"><img src = "img/cashButton1.png"></a>
+        <div id="space"></div>
+        <a class="scroll-button"  id="gofarm"><img src = "img/farmButton1.png"></a>
+    </div>
+
+      <!-- resetimg 이미지 클릭 시 추가된 이미지들을 모두 삭제 -->
+      <img class="resetimg" src="img/reset.PNG" alt="다시 만들기" onclick="resetImages()">
+        
+      <div>
+      <img class="dish" src="img/dish.PNG" alt="빙수그릇">
+      </div>
+      
+        <!-- 다른 이미지를 표시할 요소 -->
+        <div id="imageContainer">
+          <!-- 이미지를 추가하여 보이게 함 -->
+        </div>
+        
+        <!-- <div id="coinCount">코인 개수: 0</div> 빙수 제작 페이지에서 '코인 개수' 삭제 -->
+        <!-- <img class="heart1" src="img/heart.PNG">
+        <img class="heart2" src="img/heart.PNG">
+        <img class="heart3" src="img/heart.PNG">
+        <img class="heart4" src="img/heart.PNG">
+        <img class="heart5" src="img/heart.PNG"> 하트 기능 일단은 삭제 (이미지) -->
+        </body>
+</div>
+
+<br><br><br><br><br><br>
+<!-- 세진 -->
+<div id="farm"  class="scroll-target">
+<body class="text"><br><br><br>
+    <div id="horizontal">
+        <div id="timer"><p class="timerNumber">02:00</p></div>
+           
+        <div id="score"><p class="number">🍉0</p></div>
+        <div id="BingsuNumber"><p class="BingsuNumber">🍨0</p></div>
+        <div id="finalMoney"><p class="cashNumber">🪙0</p></div>
+    </div><br><br><br><br>
+    <section id="field"> 
+        <img id="watermelon1" src="img/drySoil.png" alt="watermelon">
+        <img id="watermelon2" src="img/drySoil.png" alt="watermelon">
+        <img id="watermelon3" src="img/drySoil.png" alt="watermelon">
+        <img id="watermelon4" src="img/drySoil.png" alt="watermelon">
+        <img id="watermelon5" src="img/drySoil.png" alt="watermelon">
+    </section><br><br><br>
+    <section>
+        <div>
+            <a class="scroll-button"  id="gocash"><img src = "img/cashButton1.png"></a>
+        </div>
+        <div class="container">
+            <button id="item1" draggable="true">🫗</button>
+            <button id="item2" draggable="true">✂️</button>
+            <button id="item3" draggable="true">💛</button>
+            <button id="item4" draggable="true">🔪</button>
+        </div>
+        <div>
+            <a class="scroll-button" id="gomaking"><img src = "img/makingButton1.png"></a>
+        </div>
+    </section>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div id="gameover">
+        GAME OVER<br><strong id="totalScore"></strong>
+        <input type="button" id="mainButton" onclick="goToMain()" value="MAIN">
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+<script>
+        let startTime = 120;
+        let totalCash = 0;
+
+    // 타이머 표시할 요소들 (NodeList)
+    let timerElements = document.querySelectorAll(".timerNumber");
+
+// 타이머 업데이트 함수
+    function updateTimer() {
+        let minutes = Math.floor(startTime / 60);
+        let seconds = startTime % 60;
+
+        // 숫자를 두 자리로 표시
+        let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        // NodeList 내의 각 요소에 대해 업데이트 반복
+        timerElements.forEach(element => {
+            element.textContent = formattedTime;
+        });
+
+        // 1초 감소
+        startTime--;
+
+        // 시간이 남아있으면 계속 타이머 업데이트
+        if (startTime >= 0) {
+            setTimeout(updateTimer, 1000);
+        } else {
+            let totalScore = document.getElementById("totalScore");
+            totalScore.innerHTML = "Your Total Score: " + totalCash;
+            document.getElementById("gameover").scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+    // 타이머 시작
+    updateTimer();
+
+    function goToMain() {
+        window.location.href = "BingsuGameMain.html";
+    }
+    const scrollButtons = document.querySelectorAll(".scroll-button");
+
+    scrollButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute("id").substring(2); // Removing "go" prefix
+            document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+    const watermelon1 = document.getElementById("watermelon1");
+    const watermelon2 = document.getElementById("watermelon2");
+    const watermelon3 = document.getElementById("watermelon3");
+    const watermelon4 = document.getElementById("watermelon4");
+    const watermelon5 = document.getElementById("watermelon5");
+
+    watermelon1.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+    watermelon1.addEventListener("dragenter", dragEnter);
+    watermelon1.addEventListener("drop", drop);
+
+    watermelon2.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+    watermelon2.addEventListener("dragenter", dragEnter);
+    watermelon2.addEventListener("drop", drop);
+
+    watermelon3.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+    watermelon3.addEventListener("dragenter", dragEnter);
+    watermelon3.addEventListener("drop", drop);
+
+    watermelon4.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+    watermelon4.addEventListener("dragenter", dragEnter);
+    watermelon4.addEventListener("drop", drop);
+
+    watermelon5.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+    watermelon5.addEventListener("dragenter", dragEnter);
+    watermelon5.addEventListener("drop", drop);
+    
+    const item1 = document.getElementById("item1");
+    const item2 = document.getElementById("item2");
+    const item3 = document.getElementById("item3");
+    const item4 = document.getElementById("item4");
+
+    const sumElements = document.querySelectorAll(".number");
+
+    let isDragging = false;
+    let draggedItem;
+    
+    item1.addEventListener("dragstart", (e) => {
+        isDragging = true;
+        e.dataTransfer.setData("text/plain", "item1");
+        item1.classList.add("dragging");
+        draggedItem = e.dataTransfer.getData("text/plain");
+    });
+    item2.addEventListener("dragstart", (e) => {
+        isDragging = true;
+        e.dataTransfer.setData("text/plain", "item2");
+        item2.classList.add("dragging");
+        draggedItem = e.dataTransfer.getData("text/plain");
+    });
+    item3.addEventListener("dragstart", (e) => {
+        isDragging = true;
+        e.dataTransfer.setData("text/plain", "item3");
+        draggedItem = e.dataTransfer.getData("text/plain");
+        item3.classList.add("dragging");
+    });
+    item4.addEventListener("dragstart", (e) => {
+        isDragging = true;
+        e.dataTransfer.setData("text/plain", "item4");
+        draggedItem = e.dataTransfer.getData("text/plain");
+        item4.classList.add("dragging");
+    });
+
+    const images = [
+        {id: "watermelon1", count: 0, level: 1},
+        {id: "watermelon2", count: 0, level: 1},
+        {id: "watermelon3", count: 0, level: 1},
+        {id: "watermelon4", count: 0, level: 1},
+        {id: "watermelon5", count: 0, level: 1}
+    ];
+
+    let totalWM = 0
+    function dragEnter(e){
+        images.forEach((image) => {
+            if (image.id === e.target.id){
+                if (draggedItem === "item1") {
+                    console.log("dragenter1");
+                } else if (draggedItem === "item2" && image.level == 2) {
+                    image.count++;
+                    console.log(image.id + ": " + image.count + " " + image.level);
+                    if (image.count === 1) {
+                        e.target.src = "img/grass33.png";
+                    } else if (image.count === 2){
+                        e.target.src = "img/grass22.png";
+                    }else if (image.count === 3){
+                        e.target.src = "img/grass11.png";
+                    }else {
+                        e.target.src = "img/field.png";
+                    }
+                    if (image.count >= 4){
+                        image.level = 3;
+                    }
+                }else if (draggedItem === "item3") {
+                    console.log("dragEnter3");
+                }else if (draggedItem === "item4" && image.level == 4) {
+                    e.target.src = "img/resultWM.png";
+                    setTimeout(function(){
+                        let random = Math.floor(Math.random() * 3);
+                        totalWM += random;
+                        sumElements.forEach((element) => {
+                            element.innerHTML = "🍉" + totalWM;
+                        });
+
+                        if(random == 0){
+                            e.target.src = "img/watermelon0.png";
+                        }
+                        else if(random == 1){
+                            e.target.src = "img/watermelon1.png";
+                        }
+                        else if(random == 2){
+                            e.target.src = "img/watermelon2.png";
+                        }
+
+                        setTimeout(function(){
+                            e.target.src = "img/drySoil.png";
+                            image.level = 1;
+                        }, 1000);   
+                    }, 1000);
+                }
+            }
+        });
+    }
+    let brightnessValue = 1;
+
+    function drop(e) {
+        images.forEach((image) => {
+            if (image.id === e.target.id){
+                if (draggedItem === "item1" && image.level == 1) {
+                    e.target.style.filter = `brightness(${0.3})`;
+                    e.target.style.transition = "1s";
+                    
+                    setTimeout(function() {;
+                        e.target.style = `brightness(${1})`;
+                        e.target.src = "img/field.png";
+                        setTimeout(function() {
+                            e.target.src = "img/grass11.png";
+                            setTimeout(function() {
+                                e.target.src = "img/grass22.png";
+                                setTimeout(function() {
+                                    e.target.src = "img/grass33.png";
+                                    setTimeout(function() {
+                                        e.target.src = "img/grass44.png";
+                                        image.level = 2;
+                                    }, 100)
+                                }, 100)
+                            }, 100)
+                        }, 500)
+                    }, 1000);
+                } else if (draggedItem === "item2") {
+                    console.log("item2");
+                }else if (draggedItem === "item3") {
+                        image.count = 0;
+                        if(image.level == 3){
+                            e.target.src = "img/wm1.png";
+                            setTimeout(function(){
+                                        e.target.src = "img/wm2.png";
+                                    setTimeout(function(){
+                                        e.target.src = "img/wm3.png";
+                                        image.level = 4;
+                                    }, 200);
+                            }, 200);
+                        }else {
+                            e.target.src = "img/rwm1.png";
+                            setTimeout(function(){
+                                        e.target.src = "img/rwm2.png";
+                                    setTimeout(function(){
+                                        e.target.src = "img/rwm3.png";
+                                        setTimeout(function(){
+                                            image.level = 1;
+                                        }, 200);
+                                    }, 200);
+                            }, 200);
+                        }
+                    }
+                }else if (draggedItem === "item4") {
+                    console.log("item4");
+                
+                }
+        });
+    }
+    var ingredients = []; // 선택한 재료를 저장할 배열
+      
+    var correctFlavors = [
+    ["img/bice.PNG", "img/bredbean.PNG", "img/bricecake.PNG", "img/bjelly.PNG", "img/bwatermelon.PNG", "img/bmilk.PNG", "img/bchoco.PNG"],
+    ["img/bice.PNG", "img/bredbean.PNG", "img/bricecake.PNG", "img/bjelly.PNG", "img/bwatermelon.PNG", "img/bmilk.PNG", "img/bstrawberry.PNG"],
+    ["img/bice.PNG", "img/bredbean.PNG", "img/bricecake.PNG", "img/bjelly.PNG", "img/bwatermelon.PNG", "img/bmilk.PNG", "img/bbanila.PNG"]
+    ]; /* 올바른 재료 배열 수정 (아이스크림맛 상관없이) */
+      
+    
+
+
+      
+      
+    
+      
+    function showImage(imageSrc) {
+        
+    
+        
+    var watermelonCountElement = document.querySelector("#score .number"); // 수박 개수를 나타내는 요소 선택
+    var watermelonCount = parseInt(watermelonCountElement.textContent.substring(2)); // 수박 개수 추출 및 정수로 변환
+
+    // 만약 수박 개수가 0이고 수박 이미지를 클릭하려고 한다면 클릭 무시
+    if (watermelonCount === 0 && imageSrc === 'img/bwatermelon.PNG') {
+        alert("수박 재료가 부족합니다! 수박을 재배해주세요");
+        return;
+    }
+        
+    var imageContainer = document.getElementById("imageContainer");
+    var newImage = document.createElement("img");
+    newImage.src = imageSrc;
+    newImage.classList.add("bice"); // 클래스 추가
+    imageContainer.appendChild(newImage);
+
+    // 선택한 재료를 배열에 추가
+    ingredients.push(imageSrc);
+        
+    const figureElement = event.currentTarget;
+    if (figureElement.classList.contains('watermelon')) {
+
+        // totalWM에서 1 감소
+        totalWM -= 1;
+
+        sumElements.forEach((element) => {
+            element.innerHTML = "🍉" + totalWM;
+        });
+    }
+
+}
+    var bingsuNumber = 0;
+    function resetImages() {
+      var imageContainer = document.getElementById("imageContainer");
+      imageContainer.innerHTML = ""; // 이미지들을 모두 삭제
+      ingredients = []; // 선택한 재료 배열 초기화
+
+    }
+
+    function sellBingsu() {
+    // 선택한 재료 배열과 올바른 재료 배열을 비교하여 판매 여부 결정
+    var isCorrect = correctFlavors.some(correctFlavor =>
+        ingredients.length === correctFlavor.length && ingredients.every((val, index) => val === correctFlavor[index])
+    );
+
+    if (isCorrect) {
+        // 판매 성공 시 빙수 개수 증가 및 선택한 재료 초기화
+        var bingsuCountElement = document.querySelectorAll(".BingsuNumber");
+        bingsuNumber++;
+        bingsuCountElement.forEach((element) => {
+                            element.innerHTML = "🍨" + bingsuNumber;
+                        });
+
+        // 이후 resetImages 함수 호출하여 선택한 재료 초기화
+        resetImages();
+    } else {
+        alert("이 빙수는 판매할 수 없습니다! 다시 만들어주세요");
+
+        ingredients = []; // 선택한 재료 배열 초기화
+        resetImages(); // 이미지 컨테이너 초기화
+    }
+}
+    
+    // 선택한 재료 배열과 올바른 재료 배열을 비교하여 판매 여부 결정
+    /* if (ingredients.length === correctIngredients.length && ingredients.every((val, index) => val === correctIngredients[index])) {
+      // 판매 성공 시 코인 추가 및 알림
+      coins += 100; // 코인 개수 증가 (단위: 100)
+      updateCoinCount(); // 코인 개수 업데이트
+      alert("빙수를 판매하여 100코인을 획득했습니다!");
+      // 이후 resetImages 함수 호출하여 선택한 재료 초기화
+      resetImages();
+    } else {
+      if (hearts > 0) {
+        // 하트 이미지 차감
+        var heartImage = document.querySelector(".heart" + hearts);
+        heartImage.style.display = "none"; // 해당 하트 이미지 숨기기
+        hearts--; // 하트 차감
+        alert("이 빙수는 판매할 수 없습니다! 하트를 차감합니다");
+      } else {
+        alert("하트가 없습니다! GAME OVER");
+        // 하트가 모두 차감됐을 경우 Game Over -> 게임오버 화면으로 전환 or 게임초기 화면
+      }
+
+      ingredients = []; // 선택한 재료 배열 초기화
+      resetImages(); // 이미지 컨테이너 초기화
+    }
+  } */
+      
+      
+  // 코인 개수 업데이트 함수
+  function updateCoinCount() {
+    var coinCountElement = document.getElementById("coinCount");
+    coinCountElement.textContent = "코인 개수: " + coins;
+  }
+
+// #신혜정파트
+
+document.addEventListener("DOMContentLoaded", function() {
+    const maxCustomersAtOnce = 3; // 화면에 동시에 나타날 최대 손님 수
+    const customerImages = document.querySelectorAll(".customer-image");
+    const fadeInDuration = 1000; // 서서히 나타나는 효과의 지속 시간 (밀리초)
+
+    let stockCount = document.querySelectorAll(".BingsuNumber"); // 초기 재고 수
+    let cashCount = document.querySelectorAll(".cashNumber"); // 초기 현금 수
+    let currentCustomers = []; // 현재 손님 인덱스를 저장하는 배열
+
+    function startGame() {
+        resetCustomers();
+    }
+
+    function resetCustomers() {
+        // 이전 손님과 주문 초기화
+        currentCustomers = [];
+        customerImages.forEach(image => {
+            image.style.display = "none";
+            image.removeEventListener("click", handleCustomerClick);
+        });
+
+        // 새로운 랜덤한 손님 선택 및 표시
+        currentCustomers = selectRandomCustomers(maxCustomersAtOnce);
+        currentCustomers.forEach(customerIndex => {
+            customerImages[customerIndex].style.display = "block";
+            customerImages[customerIndex].addEventListener("click", handleCustomerClick);
+        });
+    }
+
+    function selectRandomCustomers(count) {
+        const shuffledIndices = shuffleArray([...Array(5).keys()]);
+        return shuffledIndices.slice(0, count);
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function handleCustomerClick(event) {
+        const customerIndex = Array.from(customerImages).indexOf(event.target);
+        const orderCount = customerIndex + 1;
+
+        // 주문에 충분한 재고가 있는지 확인
+        if (bingsuNumber >= orderCount) {
+            placeOrder(orderCount);
+            event.target.style.display = "none";
+            checkOrdersCompleted();
+        }
+    }
+
+    function checkOrdersCompleted() {
+        if (currentCustomers.every(customerIndex => customerImages[customerIndex].style.display === "none")) {
+            setTimeout(resetCustomersWithFadeIn, 2000);
+        }
+    }
+
+    function resetCustomersWithFadeIn() {
+        fadeInCustomers();
+        setTimeout(resetCustomers, fadeInDuration);
+    }
+
+    function fadeInCustomers() {
+        const interval = fadeInDuration / 20; // 나타나는 시간 간격 계산
+        let opacity = 0;
+        const fadeInInterval = setInterval(() => {
+            opacity += 0.05; // 각 간격마다 불투명도 증가
+            customerImages.forEach(image => {
+                image.style.opacity = opacity.toString();
+            });
+            if (opacity >= 1) {
+                clearInterval(fadeInInterval);
+            }
+        }, interval);
+    }
+    
+    function placeOrder(orderCount) {
+        // 주문에 따라 재고 및 현금 업데이트
+        bingsuNumber -= orderCount;
+        totalCash += orderCount * 5;
+
+        stockCount.forEach((element) => {
+                            element.innerHTML = "🍨" + bingsuNumber;
+                        });
+        cashCount.forEach((element) => {
+                            element.innerHTML = "🪙" + totalCash;
+                        });
+          }
+
+    startGame();
+
+});
+</script>
+</html>

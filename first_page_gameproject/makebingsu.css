@@ -1,0 +1,77 @@
+.timer-container {
+    color: rgb(50, 50, 50);
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    padding: 40px;
+    border-radius: 5%;
+    border: 10px solid rgb(55, 55, 55);
+}
+
+.timer { 
+    position: relative;
+    font-size: 20px;
+
+    width: 200px;
+    height: 10px;
+}
+
+#making {
+            width: 1400px;
+            height: 700px;
+            background-image: url("img/backgroundkitchen.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+
+/* 재료 이미지 크기 및 위치 조정 */
+.ricecakeimg, .watermelonimg, .redbeanimg, .iceimg, .chocoimg, .strawberryimg, .banilaimg, .milkimg, .jellyimg {
+    width: 120px; height: 120px;
+            border: none;
+            border-radius: 8px;
+            margin: 12px;
+            font-size: 50px;
+            background: #ffffffb5;
+            box-shadow: 5px 5px 1px rgb(39, 39, 39);
+            transition: bottom 50ms ease-in,
+                        box-shadow 50ms ease-in;
+    }
+
+    .ricecakeimg:hover, .watermelonimg:hover, .redbeanimg:hover, .iceimg:hover, .chocoimg:hover, .strawberryimg:hover, .banilaimg:hover, .milkimg:hover, .jellyimg:hover {
+        bottom: 15px;
+        box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+    }
+    .jelly {position: absolute; top: 10%; left: 12%; text-align: center} .jelly p {position: absolute; top: 84%; left: 30%}
+    .ricecake {position: absolute; top: 10%; left: 21%; text-align: center} .ricecake p {position: absolute; top: 84%; left: 35%}
+    .redbean {position: absolute; top: 10%; left: 30%; text-align: center} .redbean p {position: absolute; top: 71%; left: 43%}
+    
+    .ice {position: absolute; top: 31%; left: 12%; text-align: center} .ice p {position: absolute; top: 85%; left: 39%}
+    .watermelon {position: absolute; top: 31%; left: 21%; text-align: center} .watermelon p {position: absolute; top: 85%; left: 39%}
+    .milk {position: absolute; top: 31%; left: 30%; text-align: center} .milk p {position: absolute; top: 85%; left: 40%}
+    
+    .choco {position: absolute; top: 52%; left: 12%;} .choco p {position: absolute; top: 60%; left: 30%}
+    .strawberry {position: absolute; top: 52%; left: 21%; text-align: center} .strawberry p {position: absolute; top: 60%; left: 31%}
+    .banila {position: absolute; top: 52%; left: 30%; text-align: center} .banila p {position: absolute; top: 60%; left: 26%}
+
+.name1, .name2, .name3, .name4, .name5, .name6, .name7, .name8, .name8, .name9 {color: black}
+
+/* 버튼 이미지와 텍스트 크기 및 위치 조정 */
+.growimg {position: absolute; width: 400px; height: 140px; left: 5%; bottom: 3%}
+.coinimg {position: absolute; width: 95px; height: 85px; left: 32%; top: 75.4%}
+.orderimg {position: absolute; width: 400px; height: 140px; right: 5%; bottom: 3%}
+
+.growtext {position: absolute; font-size: 100px; font-weight: bold; bottom: 0%; left: 5%}
+.ordertext {position: absolute; font-size: 100px; font-weight: bold; bottom: 0%; right: 5%}
+.cointext {position: absolute; font-size: 20px; font-weight: bold; bottom: 1%; left: 46.5%}
+.resetimg {position: absolute; width: 200px; top: 75.3%; left: 17%}
+
+/* 빙수 그릇 크기 및 위치 조정 */
+.dish, .bice {position: absolute; width: 570px; height: 570px; top: 6%; right: 14%}
+
+/* 하트 크기 및 위치 조정 */
+.heart1 {position: absolute; width: 130px; right: 2%}
+.heart2 {position: absolute; width: 130px; right: 2%; top: 17%}
+.heart3 {position: absolute; width: 130px; right: 2%; top: 32%}
+.heart4 {position: absolute; width: 130px; right: 2%; top: 47%}
+.heart5 {position: absolute; width: 130px; right: 2%; top: 62%}

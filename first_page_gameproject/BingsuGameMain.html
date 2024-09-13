@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <style type = "text/css"> 
+
+        #total {
+            margin:auto;
+            height: 660px;
+            width: 1200px;
+            background-image: url("img/Mainbackground0.jpg");
+        }
+        a {
+            text-decoration: underline rgba(255, 255, 255, 0);
+            font-size: 100px;
+            padding: 10px;
+            margin: 50px;
+        }
+        button {
+            font-family: "둥근모꼴";
+            background-color: white;
+            width: 150px;
+            height: 50px;
+            border: 5px;
+            border-radius: 8px;
+            margin: 12px;
+            font-size: 20px;
+            box-shadow: 4px 4px 1px rgb(27, 62, 84);
+        }
+        button:hover {
+            bottom: 15px;
+            box-shadow: rgba(255, 255, 255, 0.15) 0px 5px 15px 0px;
+        }
+        #horizontal {
+            display: flex; 
+            justify-content: center;
+            gap: 20px; 
+        }
+        h1 {
+            font-size: 90px;
+            text-shadow: 4px 4px 1px rgb(0, 0, 0);
+            color: rgb(199, 219, 248);
+        }
+        h3 {
+            font-size: 90px;
+            text-shadow: 4px 4px 1px rgb(0, 0, 0);
+            color: rgb(101, 131, 164);
+        }
+        h2 {
+            font-size: 50px;
+            text-shadow: 4px 4px 1px rgb(0, 0, 0);
+            color: rgb(135, 172, 212);
+        }
+        .text {
+            color: black;
+            text-align: center;
+            font-family: "둥근모꼴";
+        }
+        #explain {
+            width: 800px;
+            height: 370px;
+            margin: auto;
+        }
+        #explanation {
+            position: absolute;
+            top: 30%;
+            left: 37%;
+        }
+        #start {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+        }
+
+    </style>
+<head><meta charset="UTF-8"></head>
+<header>
+    <title>Bingsu Game</title>
+</header>
+<body class="text">
+    <div id="total">
+    <div id="horizontal"><h3 id="RS">Bingsu</h3><h1 id="game">Game</h1></div>
+    <button id="explanation" onclick="explainStart();">게임 설명</button>
+    <button id="start" onclick="gameStart();">게임 시작</button>    
+    <div id="explain"></div>
+    </div>
+</body>
+
+
+<script>
+    const EP = document.getElementById("explain");
+    let openEP = 0;
+
+    function gameStart(){
+        game.innerHTML = "";
+        document.getElementById("explanation").style.display = "none";
+        document.getElementById("start").style.display = "none";
+        RS.style.fontSize="200px";
+        RS.style.color = "rgb(255, 217, 0)";
+        RS.style.textShadow= "4px 4px 1px rgb(84, 54, 1)";
+        RS.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        RS.innerHTML = "READY...";
+        setTimeout(function() {
+            RS.style.color = "rgb(201, 68, 68)";
+            RS.innerHTML = "START!";
+            setTimeout(function() {
+                window.location.href = "FINALBingsuGame.html";
+            }, 1000);
+        }, 3000);
+    }
+
+
+    function explainStart(){
+        if (openEP == 0) {
+            EP.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+            EP.innerHTML = 
+            "<h4><빙수 판매></h4>" +
+            "** 손님을 클릭하면 빙수가 차감된 후 코인 획득! **<br>"+
+            "판매할 빙수보다 많은 개수를 가지고 있어야 판매 가능<br>" +
+            "빙수 개수가 부족한 경우에는 판매할 수 없으니 빙수 제조 페이지로 이동하여 빙수를 제조!<br>"+
+            "손님이 원하는 빙수 개수는 랜덤으로 ~ 개! <br>"+
+            "<h4><빙수 제조></h4>" +
+            "** 알맞은 순서대로 빙수를 제작해야만 빙수 획득! **<br>" +
+            "재료를 클릭 => ( 얼음 - 팥 - 빙수떡 - 빙수젤리 - 수박 - 연유 - 아이스크림 )<br>"+
+            "수박 개수가 부족한 경우에는 빙수를 만들 수 없으니 수박 재배 페이지로 이동하여 수박을 획득!<br>"+
+            "빙수를 새로 만들고 싶다면 'Reset' 버튼을 클릭하여 다시 제작<br>"+
+            "<h4><수박 재배></h4>" +
+            "** 알맞은 순서대로 재배를 해야지만 수박 획득! **<br>" +
+            "아이템을 선택 => ( 물 주기 (드롭) - 잡초 뽑기(드래그) - 애정 주기(드롭) - 수박 재배(드래그) )<br>"+
+            "잘못된 순서로 썩은 수박이 자랄 경우 다시 물주기 부터 다시 재배<br>"+
+            "수박은 랜덤으로 0 ~ 3개 획득!";
+            openEP = 1;
+        }
+        else {
+            EP.style.backgroundColor = "rgba(255, 255, 255, 0)";
+            EP.innerHTML = "";
+            openEP = 0;
+        }
+    }
+</script>
+</html>
